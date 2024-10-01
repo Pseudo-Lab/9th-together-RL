@@ -56,7 +56,7 @@ The VideoCrafter T2V model is a Latent Video Diffusion Model (LVDM) [24] consist
 
 <img src="https://github.com/YingqingHe/LVDM/blob/main/assets/framework.jpg" alt="lvdm" width="768">
 
-<img src="../imgs/vc1_fig3.png" alt="vc1_fig3" width="768">
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/vc1_fig3.PNG" alt="vc1_fig3" width="768">
 
 The **Video VAE** is **responsible for reducing the sample dimension**, allowing the subsequent diffusion model to be more compact and efficient.
 
@@ -70,11 +70,13 @@ To perform the denoising process, a denoiser U-Net is learned to estimate the no
 As illustrated in Fig.3, the denoising U-Net is a 3D U-Net architecture consisting of a stack of basic spatial-temporal blocks with skip connections. Each block comprises convolutional layers, **spatial transformers (ST)**, and **temporal transformers (TT)**, where
 
 $$
-ST = \text{Proj}_{in} \circ (\text{Attn}_{self} \circ \text{Attn}_{cross} \circ \text{MLP}) \circ \text{Proj}_{out},
+ST = \text{Proj}_{in} \circ 
+(\text{Attn}\_{self} \circ \text{Attn}\_{cross} \circ \text{MLP}) 
+\circ \text{Proj}\_{out}
 $$
 
 $$
-TT = \text{Proj}_{in} \circ (\text{Attn}_{temp} \circ \text{Attn}_{temp} \circ \text{MLP}) \circ \text{Proj}_{out}
+TT = \text{Proj}\_{in} \circ (\text{Attn}\_{temp} \circ \text{Attn}\_{temp} \circ \text{MLP}) \circ \text{Proj}\_{out}
 $$
 
 The controlling signals of the denoiser include semantic control, such as the text prompt, and motion speed control, such as the video fps. We inject the semantic control via the cross-attention:
@@ -99,7 +101,8 @@ Motion speed control with fps is incorporated through an FPS embedder, which sha
 
 To supply the video model with image information in a compatible manner, **it is essential to project the image into a text-aligned embedding space**. We propose learning such an embedding with rich details to enhance visual fidelity. Figure 4 illustrates the diagram of equipping the diffusion model with an image conditional branch.
 
-<img src="../imgs/vc1_fig4.png" alt="vc1_fig4" width="512">
+
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/vc1_fig4.PNG" alt="vc1_fig4" width="512">
 
 #### Text-Aligned Rich Image Embedding.
 
@@ -109,12 +112,12 @@ To promote alignment with the text embedding, we utilize a learnable projection 
 Fin via dual cross-attention layers:
 
 $$
-F_{out} = \text{Softmax}\left(\frac{QK^{T}_{text}}{\sqrt{d}}\right)V_{text} + \text{Softmax}\left(\frac{QK^{T}_{img}}{\sqrt{d}}\right)V_{img}
+F\_{out} = \text{Softmax}\left(\frac{QK^{T}\_{text}}{\sqrt{d}}\right)V\_{text} + \text{Softmax}\left(\frac{QK^{T}\_{img}}{\sqrt{d}}\right)V\_{img}
 $$
 
 Figure 5 compares the visual fidelity of the generated videos conditioned on the global semantic token and our adopted rich visual tokens, respectively.
 
-<img src="../imgs/vc1_fig5.png" alt="vc1_fig5" width="512">
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/vc1_fig5.PNG" alt="vc1_fig5" width="512">
 
 ## 4. Experiments
 
@@ -137,9 +140,9 @@ We employ comprehensive metrics to assess video quality and the alignment betwee
 
 Our T2V model achieves the best visual quality and video quality among open-source models.
 
-<img src="../imgs/vc1_fig6.png" alt="vc1_fig6" width="256">
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/vc1_fig6.PNG" alt="vc1_fig6" width="256">
 
-<img src="../imgs/vc1_table1.png" alt="vc1_table1" width="256">
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/vc1_table1.PNG" alt="vc1_table1" width="256">
 
 ### 4.2. Performance Evaluation
 
@@ -152,29 +155,29 @@ The existing open-source models merely represent the starting point. Improvement
 ----
 
 <video width="512" controls>
-  <source src="../vids/vid00.mp4" type="video/mp4">
+  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid00.mp4" type="video/mp4">
 </video>
 
 <video width="512" controls>
-  <source src="../vids/vid01.mp4" type="video/mp4">
+  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid01.mp4" type="video/mp4">
 </video>
 
 <video width="512" controls>
-  <source src="../vids/vid02.mp4" type="video/mp4">
+  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid02.mp4" type="video/mp4">
 </video>
 
 <video width="512" controls>
-  <source src="../vids/vid03.mp4" type="video/mp4">
+  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid03.mp4" type="video/mp4">
 </video>
 
 <video width="512" controls>
-  <source src="../vids/vid04.mp4" type="video/mp4">
+  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid04.mp4" type="video/mp4">
 </video>
 
 <video width="512" controls>
-  <source src="../vids/vid05.mp4" type="video/mp4">
+  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid05.mp4" type="video/mp4">
 </video>
 
 <video width="512" controls>
-  <source src="../vids/vid06.mp4" type="video/mp4">
+  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid06.mp4" type="video/mp4">
 </video>
