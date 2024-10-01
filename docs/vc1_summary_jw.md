@@ -154,30 +154,16 @@ The existing open-source models merely represent the starting point. Improvement
 
 ----
 
-<video width="512" controls>
-  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid00.mp4" type="video/mp4">
-</video>
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid00.gif" alt="vid00" width="512">
 
-<video width="512" controls>
-  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid01.mp4" type="video/mp4">
-</video>
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid01.gif" alt="vid01" width="512">
 
-<video width="512" controls>
-  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid02.mp4" type="video/mp4">
-</video>
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid02.gif" alt="vid02" width="512">
 
-<video width="512" controls>
-  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid03.mp4" type="video/mp4">
-</video>
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid03.gif" alt="vid03" width="512">
 
-<video width="512" controls>
-  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid04.mp4" type="video/mp4">
-</video>
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid04.gif" alt="vid04" width="512">
 
-<video width="512" controls>
-  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid05.mp4" type="video/mp4">
-</video>
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid05.gif" alt="vid05" width="512">
 
-<video width="512" controls>
-  <source src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid06.mp4" type="video/mp4">
-</video>
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/vids/vid06.gif" alt="vid06" width="512">
