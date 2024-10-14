@@ -13,6 +13,8 @@
 * hybrid-attention residual learning mechanism
 * pseudo-3D convolutions 
 * temporal coherence
+* adapter mechanism
+* [Anime2Sketch](https://github.com/Mukosame/Anime2Sketch)
 
 ## Key Sentences
 
@@ -198,9 +200,26 @@ where L1 is the MAE loss, Lp is a perceptual loss (LPIPS [59]), Ld is a discrimi
 
 ### 3.4. Sketch-based Controllable Generation
 
+To make our framework more controllable for real-world production settings, we follow the industrial practices [25] and introduce sketch-based generation guidance. **We propose a frame-independent sketch encoder S that enables users to control the generated motion using sparse sketch guidance.** Built upon **the adapter mechanism [58]**, our sketch encoder effectively converts our video diffusion model into a sketch-conditioned generative model.
+
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/tc_fig04.PNG" alt="tc_fig04" width="384">
+
+To reduce users’ drawing efforts and accommodate realworld usage, we design our sketch encoder module S that supports sparse inputs (Figure 4) in which the users are not required to provide all sketch images for the target frames. To achieve this, we **design S as a frame-wise adapter that learns to adjust the intermediate features of each frame independently based on the provided sketch**: Fi inject = S(si, zi, t), where **Fi inject is processed using the same strategy of ControlNet [58]**. For the frames without sketch guidance, S takes an empty image as input: Fi inject = S(s∅, zi, t). Using empty image inputs improves the learning dynamics of sketch encoder.
+
+**Training.**
+We freeze the denoising network ϵθ and optimize the sketch encoder S. S uses a ControlNet-like architecture, initialized from the pre-trained StableDiffusion v2.1. The training objective is:
+
+$$
+\min_{\theta} \mathbb{E}_{(x), s, t, \epsilon \sim \mathcal{N}(0, I)} \| \epsilon - \epsilon^S_{{\theta}} (z_t; c_{\text{img}}, c_{\text{txt}}, s', t, \text{fps}) \|_2^2
+$$
+
+where ϵSθ denotes the combination of ϵθ and S, s denotes sketches obtained from **Anime2Sketch [51]** using original video frames, and s′ denotes selected sketches from s (illustrated in Figure 4). To support typical patterns of user provided sketch inputs, we design a bisection selection pattern (chosen 80% of the time) to select input sketches: for an interpolation segment (i, j), the sketch of ⌊ (i+j) / 2 ⌋-th frame is selected; the selection is applied recursively (with the recursion depth n uniformly sampled from [1, 4]) from segment (1,L) to subdivided segments. This bisection selection pattern mimics real-world user behavior, where users provides sketches at equally-spaced interval. For the remaining 20%, we randomly select input sketches from s to maximize the generalization ability.
+
 ## 4. Experiments
 
 ### 4.1. Implementation Details
+
+Our implementation is primarily based on the image-to-video model DynamiCrafter [54] (interpolation variant @512×320 resolution).
 
 ### 4.2. Quantitative Comparisons
 
@@ -211,6 +230,38 @@ where L1 is the MAE loss, Lp is a perceptual loss (LPIPS [59]), Ld is a discrimi
 The participants were asked to choose the best result in terms of **motion quality, temporal coherence, and frame fidelity**.
 
 ### 4.5. Ablation Study
+
+**Toon rectification learning.** 
+
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/tc_fig05.PNG" alt="tc_fig05" width="384">
+
+We construct the following baselines to investigate the effectiveness of our domain adaptation strategy: 
+
+(I): directly using the pre-trained backbone model (DCinterp [54]), 
+
+(II): fine-tuning the imagecontext projector (ICP) and entire denoising U-Net (Spatial+ Temporal layers), 
+
+(III): fine-tuning ICP and spatial layers while bypassing temporal layers in forwarding during training, 
+
+(IV) (our adapting strategy): fine-tuning ICP and spatial layers while keeping temporal layers frozen , and 
+
+(V): fine-tuning only ICP. 
+
+The quantitative comparison is shown in Table 3. DCInterp without any fine-tuning (I) shows decent quantitative results but suffers from **unexpected generation of live-action content** (2nd row in Figure 5). While directly fine-tuning all layers (II) leads to adaption to cartoon domain to some extent, **it deteriorates the temporal prior, as evidenced by the inconsistency and sudden change of generated content** (3rd row in Figure 5). Moreover, simply bypassing temporal layers (III) in forwarding to preserve temporal prior leads to disastrous degradation due to mismatched distribution mapping. Comparing (I), (II), and (IV), we can observe improved performance of both FVD and CLIPimg by fine-tuning ICP and spatial layers, while keeping temporal layers frozen, which enhances the adaptability to cartoon domain and preserves learned motion prior. The comparison between (I) and (V) shows fine-tuning ICP slightly improves semantic alignment for generating semantically correct content (higher CLIPimg), thanks to its better comprehension of cartoon context. 
+
+**Dual-reference-based 3D VAE decoder.**
+
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/tc_fig06.PNG" alt="tc_fig06" width="384">
+
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/tc_fig08.PNG" alt="tc_fig08" width="384">
+
+We further evaluate the effectiveness of different modules in the proposed dual-reference-based 3D decoder. We first construct a variant by **removing the pseudo-3D convolutions (P3D)**, denoted by Oursw/o P3D. Base on that, we then further remove the introduced **hybrid-attention-residual (HAR) module** to obtain the second variant Oursw/o HAR & P3D, which is exactly the image decoder used in most diffusion-based image/video generative models. We evaluate the our full method with the mentioned variant via video reconstruction task and report the evaluation results in Table 4. The performance of ‘Oursw/o P3D’ declines due to the attenuation of propagation for injected reference information, leading to a loss of details (3rd column in Figure 6). Furthermore, removing both HAR and P3D considerably impairs the performance, as shown in Table 4, since solely relying on the VAE decoder without reference fails to recover lost details in compressed latents (4th column in Figure 6). In contrast, our full method effectively compensates for the lost details through the introduced dual-reference-based detail injection and propagation mechanism. Additionally, we show the comparison of reconstruction quality along frame sequences (average on the 1K test samples) in Figure 8, which further highlights the effectiveness of our design. 
+
+**Sparse sketch guidance.** 
+
+<img src="https://github.com/Pseudo-Lab/9th-together-RL/blob/main/imgs/tc_fig07.PNG" alt="tc_fig07" width="384">
+
+To verify the design of our frame-independent sketch encoder, we construct a variant by training S with full conditions s (i.e., per-frame sketch guidance) and enable its sparse control by zeroing out Fi inject for frames without guidance during inference. We provide only the middle-frame sketch as sparse control and compare this **ZeroGate** variant with our **FrameIn.Enc.** (frame independent encoder), as shown in Figure 7. Although ‘ZeroGate’ can generate the middle frame adhering to the sketch guidance, it struggles to produce consistent content for other unguided frames. In contrast, our ‘FrameIn.Enc.’ not only generates middle frames with good conformity to the sketch, but also maintains temporal coherence across the generated sequence. We also present the generated results without sketch guidance (4th row in Figure 7) using the same input cartoon images.
 
 **Toon rectification learning.**
 
