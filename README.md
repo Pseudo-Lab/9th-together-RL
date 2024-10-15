@@ -7,7 +7,7 @@
 | 2 | 2024/09/24 | 스터디 사정으로 쉬어갑니다 |  |  | 
 | 3 | 2024/10/1 | [VideoCrafter1: Open Diffusion Models for High-Quality Video Generation](https://arxiv.org/abs/2310.19512) | 채지훈 | [발표자료](./VideoCrafter1.pdf) | 
 | 4 | 2024/10/8 | [DynamiCrafter: Animating Open-domain Images with Video Diffusion Priors](https://arxiv.org/abs/2310.12190) | 홍진욱 | [발표자료](.\DynamiCrafter.pdf) | 
-| 5 | 2024/10/15 | [ToonCrafter: Generative Cartoon Interpolation](https://arxiv.org/abs/2405.17933) 리뷰 및 프로젝트 주제 공유 | 민예린 |  | 
+| 5 | 2024/10/15 | [ToonCrafter: Generative Cartoon Interpolation](https://arxiv.org/abs/2405.17933) 리뷰 및 프로젝트 주제 공유 | 민예린 |[발표자료](.\ToonCrafter.pdf) | 
 | 6 | 2024/10/22 | 논문 리뷰 및 프로젝트 공유 | 송주환 |  | 
 | 7 | 2024/10/29 | [오프라인 & 중간점검] 논문 리뷰 및 프로젝트 공유 | 박범진 |  | 
 | 8 | 2024/11/5 | 논문 리뷰 및 프로젝트 공유 | 최상호 |  | 
