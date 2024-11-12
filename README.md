@@ -11,7 +11,7 @@
 | 6    | 2024/10/22 | [Pyramidal Flow Matching for Efficient Video Generative Modeling](https://pyramid-flow.github.io/) 논문 리뷰 및 프로젝트 공유 | 송주환     | [발표자료](.\PyramidalFlowMatching.pdf) |
 | 7    | 2024/11/2  | [오프라인 & 중간점검] 논문 리뷰 및 프로젝트 공유 <br> [Stylus: Automatic Adapter Selection for Diffusion Models](https://stylus-diffusion.github.io/) | 박범진     | [발표자료](Stylus.pdf)                  |
 | 8    | 2024/11/5  | [StyleCrafter (Liu et al, SIGGRAPH Asia 2024)](https://arxiv.org/abs/2312.00330) 리뷰 및 프로젝트 주제 공유 | 최상호     | <a href="StyleCrafter - RL Together 9th.pdf">발표자료</a>          |
-| 9    | 2024/11/12 | [DreamVideo](https://arxiv.org/abs/2312.04433), [VADER](https://openreview.net/forum?id=B9dYUFfzl3)| 이홍규  | [발표자료1](https://howsmyanimeprofilepicture.github.io/slide-decks/dream-video) <br> [발표자료2](https://howsmyanimeprofilepicture.github.io/slide-decks/vader), |
+| 9    | 2024/11/12 | [DreamVideo](https://arxiv.org/abs/2312.04433), [VADER](https://openreview.net/forum?id=B9dYUFfzl3)| 이홍규  | [발표자료1](./dream-video.pdf) <br> [발표자료2](./vader.pdf), |
 | 10   | 2024/11/19 | 논문 리뷰 및 프로젝트 공유                                   | 채지훈     |                                         |
 | 11   | 2024/11/26 | 논문 리뷰 및 프로젝트 공유                                   | 홍진욱     |                                         |
 | 12   | 2024/12/3  | 논문 리뷰 및 프로젝트 공유                                   | 민예린     |                                         |
