@@ -13,7 +13,7 @@
 | 8    | 2024/11/5  | [StyleCrafter (Liu et al, SIGGRAPH Asia 2024)](https://arxiv.org/abs/2312.00330) 리뷰 및 프로젝트 주제 공유 | 최상호     | <a href="StyleCrafter - RL Together 9th.pdf">발표자료</a>          |
 | 9    | 2024/11/12 | [DreamVideo](https://arxiv.org/abs/2312.04433), [VADER](https://openreview.net/forum?id=B9dYUFfzl3)| 이홍규  | [발표자료1](./dream-video.pdf) <br> [발표자료2](./vader.pdf) |
 | 10   | 2024/11/19 | [Dreambooth](https://arxiv.org/abs/2208.12242) / [Textual-Inversion](https://arxiv.org/abs/2208.01618) / [ControlNet](https://arxiv.org/abs/2302.05543) 훑어보기      | 이홍규     |      [발표자료1](./ctrl-net.pdf) <br> [발표자료2](./text-inv-and-dreambooth.pdf)|
-| 11   | 2024/11/26 | 논문 리뷰 및 프로젝트 공유                                   | 홍진욱     |                                         |
+| 11   | 2024/11/26 | 논문 리뷰 및 프로젝트 공유                                   | 홍진욱     | [발표자료](./Lumiere.pdf)                                        |
 | 12   | 2024/12/3  | 논문 리뷰 및 프로젝트 공유                                   | 민예린     |                                         |
 | 13   | 2024/12/10 | 논문 리뷰 및 프로젝트 공유                                   | 송주환     |                                         |
 | 14   | 2024/12/17 | 논문 리뷰 및 프로젝트 마무리                                 | 박범진     |                                         |
