@@ -15,7 +15,7 @@
 | 10   | 2024/11/19 | [Dreambooth](https://arxiv.org/abs/2208.12242) / [Textual-Inversion](https://arxiv.org/abs/2208.01618) / [ControlNet](https://arxiv.org/abs/2302.05543) 훑어보기      | 이홍규     |      [발표자료1](./ctrl-net.pdf) <br> [발표자료2](./text-inv-and-dreambooth.pdf)|
 | 11   | 2024/11/26 | [Lumiere: A Space-Time Diffusion Model for Video Generation](https://arxiv.org/pdf/2401.12945)  | 홍진욱     | [발표자료](./Lumiere.pdf)                                        |
 | 12   | 2024/12/3  | [Boximator: Generating Rich and Controllable Motions for Video Synthesis](https://arxiv.org/pdf/2402.01566) | 민예린     |   [발표자료](./Boximator.pdf)    |
-| 13   | 2024/12/10 | [MimicMotion : High-Quality Human Motion Video Generation with Confidence-aware Pose Guidance](https://tencent.github.io/MimicMotion/) | 송주환     |                                         |
+| 13   | 2024/12/10 | [MimicMotion : High-Quality Human Motion Video Generation with Confidence-aware Pose Guidance](https://tencent.github.io/MimicMotion/) | 송주환     | [발표자료](./MimicMotion-Review.pdf) |
 | 14   | 2024/12/17 | 논문 리뷰 및 프로젝트 마무리                                 | 박범진     |                                         |
 
 ### Study Member ([소개](https://github.com/Pseudo-Lab/9th-together-RL/discussions/1))
